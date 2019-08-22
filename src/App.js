@@ -3,6 +3,7 @@ import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import Register from './Register';
 import Login from './Login';
+import HomeContainer from './HomeContainer';
 
 const My404 = () => {
   return (
@@ -26,7 +27,7 @@ class App extends Component {
 
   login = async (loginInfo) => {
     try {
-      const loginResponse = await fetch('', {
+      const loginResponse = await fetch('http://localhost:8000/user/login', {
         method: 'POST',
         credentials: 'include',
         body: JSON.stringify(loginInfo),
@@ -43,9 +44,7 @@ class App extends Component {
           loading: false
         }
       })
-
       return parsedResponse
-
     } catch (err) {
       console.log(err)
     }
@@ -53,7 +52,7 @@ class App extends Component {
 
   register = async (data) => {
     try {
-      const registerResponse = await fetch('', {
+      const registerResponse = await fetch('http://localhost:8000/user/register', {
         method: 'POST',
         credentials: 'include',
         body: data,
@@ -83,6 +82,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" render={(props) => <Login {...props} login={this.login} /> } />
           <Route exact path="/register" render={(props) => <Register {...props} register={this.register} /> } />
+          <Route exact path="/home" render={(props) => <HomeContainer />} />
           <Route component={My404} />
         </Switch>
       </main>
