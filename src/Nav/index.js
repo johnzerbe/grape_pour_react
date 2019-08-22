@@ -9,7 +9,7 @@ const NavBar = (props) => {
           <NavLink href="/home">Home</NavLink> 
           <NavLink href="/home/profile">Profile</NavLink> 
         </Nav>
-		)
+	)
 }
 
 export default NavBar;
