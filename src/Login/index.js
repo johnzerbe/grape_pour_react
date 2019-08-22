@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Message} from 'semantic-ui-react'
 
 class Login extends Component {
     constructor() {
@@ -47,9 +48,9 @@ class Login extends Component {
                         <input type="password" name="password" onChange={this.handleChange} />
                     </label>
                     <button type='submit' >Login</button>
-                    <message>
+                    <Message>
                         Not a member? <Link to='/register'>Register</Link>
-                    </message>
+                    </Message>
                 </form>
             </div>
         )

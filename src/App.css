@@ -18,6 +18,18 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+/* navbar */
+a.nav-link {
+  display: flex-row;
+  color: black;
+  padding: 4px;
+}
+
+.header {
+  height: 50vh;
+  background-color: lightslategrey;
+}
+
 
 .App-link {
   color: #61dafb;

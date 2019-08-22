@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import Register from './Register';
 import Login from './Login';
 import HomeContainer from './HomeContainer';
-
+import User from './User'
 const My404 = () => {
   return (
     <div>
@@ -82,9 +82,10 @@ class App extends Component {
         <Switch>
           <Route exact path="/" render={(props) => <Login {...props} login={this.login} /> } />
           <Route exact path="/register" render={(props) => <Register {...props} register={this.register} /> } />
-          <Route exact path="/home" render={(props) => <HomeContainer {...props} /> } />
+          <Route exact path="/home" render={(props) => <HomeContainer {...props}/> } />
+          <Route exact path='/home/profile' render={(props) => <User {...props} userInfo={this.state} /> } />
           <Route component={My404} /> 
-        </Switch>
+        </Switch>            
       </main>
     );
   }
