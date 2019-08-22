@@ -35,7 +35,7 @@ class Register extends Component {
             console.log(pair[0] ,', ', pair[1])
         }
 
-        const registerCall = this.props.register(data);
+        const registerCall = this.props.register(data)
 
         registerCall.then((data) => {
             console.log(data)
@@ -50,6 +50,7 @@ class Register extends Component {
     render() {
         return (
             <div>
+            <h3>Register</h3>
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Create Username:
