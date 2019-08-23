@@ -21,6 +21,7 @@ class App extends Component {
       username: '',
       password: '',
       image: '',
+      id: '',
       loading: true
     }
   }
@@ -71,8 +72,9 @@ class App extends Component {
         ...parsedResponse.data,
         loading: false
       })
+      console.log(this.state);
       return parsedResponse;
-
+      
     } catch (err) {
       console.log(err)
     }
@@ -84,7 +86,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" render={(props) => <Login {...props} login={this.login} /> } />
           <Route exact path="/register" render={(props) => <Register {...props} register={this.register} /> } />
-          <Route exact path="/home" render={(props) => <HomeContainer {...props} /> } />
+          <Route exact path="/home" render={(props) => <HomeContainer {...props} userId={this.state.id}/> } />
           <Route component={My404} /> 
         </Switch>
       </main>

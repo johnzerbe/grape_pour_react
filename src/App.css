@@ -31,3 +31,33 @@
     transform: rotate(360deg);
   }
 }
+
+.beer-list {
+  margin: 450px 50px 0px 50px;
+}
+
+.logo {
+  padding: 10px 0px 10px 0px;
+}
+
+.main-text {
+  color: #E3A710;
+  font-weight: bold;
+  font-family: 'Bitter', serif;
+  font-size: 16px;
+  
+}
+
+.button-class {
+  background-color: #E3A710;
+  color: white;
+}
+
+.card {
+  background-color: #282c34;
+  border: solid 3px red;
+}
+
+.card-header {
+  background-color: #E3A710;
+}
