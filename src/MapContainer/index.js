@@ -1,4 +1,4 @@
-import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
+import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 
 import React, { Component } from 'react';
 
@@ -9,6 +9,11 @@ const mapStyles = {
     height: '400px'
   };
 
+//   bounder = new google.maps.LatLngBounds();
+//   let loc = new google.maps.LatLng(marker.position.lat(40.0203098), marker.position.lng(-105.2183136));
+//   bounds.extend(loc)
+
+ 
 
   
 class MapContainer extends Component {
@@ -25,6 +30,7 @@ class MapContainer extends Component {
     componentDidMount()
     {
         this.addCoordinates();
+        
     }
 
     
@@ -55,19 +61,9 @@ class MapContainer extends Component {
     }
 
 
-    
-
-
     getMarkers = () =>
     {
-        // console.log("getMarkers was called");
-        // console.log("this.state.beerCoordinates length is " + this.state.beerCoordinates.length)
-        // console.log("beerCoordinates: " + this.state.beerCoordinates);
-        // console.log(this.state.beerCoordinates[1].lng , 'LNG EXAMPLE')
-        // console.log(this.state.beerCoordinates[1].lat , 'LAT EXAMPLE')
-        // console.log(this.state.beerCoordinates[1].name , ' < this is the name')
-        
-        if (this.state.beerCoordinates.length > 0)
+       if (this.state.beerCoordinates.length > 0)
         {
             return this.state.beerCoordinates.map((beer, index) =>
             {
@@ -79,6 +75,30 @@ class MapContainer extends Component {
         }
     }
 
+   
+
+    
+
+    getAvgLatLng = (coordinates) => {
+        // console.log(this.state.beerCoordinates, " This is a test lat")
+        // var bounds = new this.props.google.maps.LatLngBounds();
+        // for (var i = 0; i < points.length; i++) {
+        //     bounds.extend(points[i]);
+        // }
+       
+       
+       
+        //coordinates is an array of lats and longs
+        //add them all up and take averages
+
+        //also find largest deviation from average
+        //return an object {lat: avgLat, lng: avgLng, zoom: something}
+    }
+
+
+ 
+
+  
 
     
 
@@ -89,16 +109,22 @@ class MapContainer extends Component {
         return (
             <div className="mapcontainer">
             {
+                
                 this.state.ready ?
                 <Map
                 google={this.props.google}
                 zoom={11.5}
                 style={mapStyles}
-                initialCenter={{ lat: this.state.beerCoordinates[0].lat, lng: this.state.beerCoordinates[0].lng}}>
+                initialCenter={{ 
+                    lat: this.state.beerCoordinates[0].lat, 
+                    lng: this.state.beerCoordinates[0].lng}}>
                 
                 {this.getMarkers()}
+                {this.getAvgLatLng()}
+               
                 
-                
+                    
+                        
                 
                 
                 

@@ -31,6 +31,12 @@
   font-family: 'Bitter', serif;
   font-size: 16px;
 }
+.nav-text:hover {
+  color: #C48C0E;
+  font-weight: bold;
+  font-family: 'Bitter', serif;
+  font-size: 16px;
+}
 
 .navbar {
   margin-left: 50px;
@@ -38,6 +44,13 @@
 
 .main-text {
   color: #E3A710;
+  font-weight: bold;
+  font-family: 'Bitter', serif;
+  font-size: 16px;
+}
+
+.main-text:hover {
+  color: #C48C0E;
   font-weight: bold;
   font-family: 'Bitter', serif;
   font-size: 16px;
@@ -59,23 +72,18 @@
 }
 
 .button {
-  color: white;
-  font-weight: bold;
+  
   text-align: left;
-  background-color: #E3A710;
-  border-radius: 7px;
-  font-size: 14px;
+  background: #fcbb11;
+  border-radius: 3px;
+  font-size: 12px;
   transition-duration: 0.4s;
-  padding: 0px 10px;
+  padding: 5px 10px;
 }
 
 .button:hover {
-  background-color: white;
-  color: #E3A710; 
+  background-color: #F0AD11;
 }
-
-
-
 
 
 /* login and register styles */
@@ -140,7 +148,7 @@
 /* search css properties */
 
 .css-yk16xz-control, .css-1pahdxg-control {
-  width: 13rem
+  width: 11rem;
 }
 
 
@@ -152,8 +160,35 @@
   background: #fcbb11 none !important;
 }
 
+.ui.button:hover {
+  background: #F0AD11 none !important;
+}
+
 .searchForm {
   padding-bottom: 1rem;
 }
 
+.white {
+  color: white;
+}
 
+.welcome {
+  font-weight: bold;
+  font-family: 'Bitter', serif;
+  color: #F0AD11;
+}
+
+.jumbo {
+  background-color:transparent !important;
+}
+
+
+
+.markerLabel
+{
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 0px 0px 10px 0px;
+}
