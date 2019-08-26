@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+
+
 
 class Register extends Component {
     constructor() {
@@ -49,29 +52,30 @@ class Register extends Component {
 
     render() {
         return (
-            <div>
-            <h3>Register</h3>
-                <form onSubmit={this.handleSubmit}>
-                    <label>
-                        Create Username:
-                        <input type="text" name="username" required="True" onChange={this.handleChange} /> 
-                    </label>
-                    <label>
-                        Create Password:
-                        <input type="text" name="password" onChange={this.handleChange} />
-                    </label>
-                    <label>
-                        Upload Photo:
-                        <input type="file" name="image" onChange={this.handleChange} />
-                    </label>
-                    <button type="submit" >Register</button>
-                    <message>
-                        Already a member? <Link to='/Login'>Login</Link>
-                    </message>
-                </form>
+            <div className="loginall">
+                   <h2 class="banner">Welcome to OnTap!</h2>  
+            <div class="wrapper">
+            <form onSubmit={this.handleSubmit} class="form-signin">       
+              <h2 class="form-signin-heading">register</h2>
+              <input type="text" class="form-control" name="username" placeholder="Username" required="True" onChange={this.handleChange} /> 
+              <input type="text" class="form-control" name="password" placeholder="Password" onChange={this.handleChange} />
+              <label>
+                   Upload Photo:
+                <input type="file" name="image" onChange={this.handleChange} />
+            </label>
+                <Button color="warning" className="btn login-button btn-primary btn-block" type="submit">Register</Button> 
+                <message className="messageclass">
+                    Already a member? <Link className="reg" to='/'>Login</Link>
+                </message>  
+            </form>
             </div>
+            </div>
+
+          
         )
     }
 }
 
-export default Register;
+export default Register;   
+
+

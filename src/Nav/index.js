@@ -4,17 +4,17 @@ import { Nav, NavItem, NavLink } from 'reactstrap';
 class Navbar extends React.Component {
   render() {
     return (
-        <div>
+        <div className='navbar'>
       
         <Nav>
           <NavItem>
-            <NavLink href="#">Link</NavLink>
+              <NavLink className="nav-text" href="#">Home</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="#">Link</NavLink>
+              <NavLink className="nav-text" href="#">User</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="#">Another Link</NavLink>
+              <NavLink className="nav-text" href="#">Logout</NavLink>
           </NavItem>
       </Nav>
       </div>
