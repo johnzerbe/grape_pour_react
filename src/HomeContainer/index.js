@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import '../App.css';
-import SearchBar from '../SearchBar';
-import Select from 'react-select';
 import BeerList from '../BeerList';
 import MapContainer from '../MapContainer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Logo from '../beerlogo.svg';
-import Header from '../Header';
 import DropDown from '../DropDown';
 import Navbar from '../Nav';
 import { Input, Button } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
+import Welcome from '../Welcome'
 
 
 
@@ -45,16 +43,16 @@ class HomeContainer extends Component {
     this.setState({
       ready: false
     })
-    let url = (`${apiURL}by_city=${this.state.searchTerm}`);
+    let url = (`${apiURL}${this.state.city}=${this.state.searchTerm}&${this.state.state}=${this.state.selectedState}`);
       fetch(url)
       .then(response => response.json())
       .then((beers) => {
         
          this.setState({
              beers: beers,
-             ready: true,
-             searchTerm: "",
-             selectedState: ''
+             ready: true
+            //  searchTerm: ""
+         
 ,         }) 
      }); 
      if (this.state.searchTerm === '') {
@@ -65,12 +63,6 @@ class HomeContainer extends Component {
     }
   }
 
-  handleClick = (e) => {
-    console.log(e.target)
-    this.setState({
-        parameter: e.target.value
-    })
-}
 
   handleSelection = (option) => {
     console.log(option);
@@ -81,6 +73,8 @@ class HomeContainer extends Component {
     // this.handleTermChange(this.state.term);
   }
    
+
+  
 
   render() {
     console.log(this.props.userId)
@@ -97,24 +91,31 @@ class HomeContainer extends Component {
                 </tr>
               </tbody>
             </table>
+
             <Navbar/>
 
-
-
-
             <form class="searchForm" onSubmit={this.handleSubmit}>
-              
-              <Input type='text' placeholder='Search City...' name="searchTerm" onChange={this.handleTermChange} action>
+              <Input type='text' placeholder='Search City...' name="searchTerm" value={this.state.searchTerm} onChange={this.handleTermChange} action>
               <input />
               <DropDown class="css-yk16xz-control css-1pahdxg-control" currentState={this.props.state} handleSelection={this.handleSelection} />
               <Button class="ui.button" type='submit'>Find Breweries</Button>
               </Input>
             </form>
+
+
+         
+
+                    
+
+
+
+
+
+
+
             
-
-
-
-
+            { !this.state.ready ? <Welcome /> : null}
+            
             
             {
                 this.state.ready ?
