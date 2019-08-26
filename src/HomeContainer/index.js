@@ -7,13 +7,16 @@ import MapContainer from '../MapContainer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Logo from '../beerlogo.svg';
 import Header from '../Header';
-import NavbarHeader from '../Nav';
+import DropDown from '../DropDown';
+import Navbar from '../Nav';
+import { Input, Button } from 'semantic-ui-react';
+import 'semantic-ui-css/semantic.min.css';
 
 
 
 const apiURL = 'https://api.openbrewerydb.org/breweries?';
 
-const ENTER_KEY = 13;
+
 
 
 class HomeContainer extends Component {
@@ -23,14 +26,14 @@ class HomeContainer extends Component {
     this.state = {
       beers: [],
       ready: false,
-      searchTerm: ""
+      searchTerm: "",
+      city: "by_city",
+      state: "by_state",
+      selectedState: ''
     }
     this.handleTermChange = this.handleTermChange.bind(this);
 
   }
-
-
-
 
 
   handleTermChange = (e) => {
@@ -49,8 +52,10 @@ class HomeContainer extends Component {
         
          this.setState({
              beers: beers,
-             ready: true
-         }) 
+             ready: true,
+             searchTerm: "",
+             selectedState: ''
+,         }) 
      }); 
      if (this.state.searchTerm === '') {
       this.setState({
@@ -60,72 +65,29 @@ class HomeContainer extends Component {
     }
   }
 
+  handleClick = (e) => {
+    console.log(e.target)
+    this.setState({
+        parameter: e.target.value
+    })
+}
 
-
-  // handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   this.handleTermChange();
-  
-  // }
-
-  // handleKeyDown = (e) => {
-  //   if(e.keyCode === ENTER_KEY) {
-  //     this.handleTermChange()
-  //   }
-  // }
-
-
-    // if(this.state.searchReady === false) {
-    //       console.log("not gonna happen")
-    //     } else {
-    //       this.setState({
-    //         beers: beers,
-    //         ready: true
-    //     }) 
-    //     }
-
-
-
-
-
-
-
-
-  
-    // getBeers = async () => {
-    //   try{
-    //     const beers = await fetch(apiURL);
-    //     const beersJson = await beers.json();
-    //     this.setState({beers: beersJson})
-    //     return beersJson
-    //     } catch (err) {
-    //       console.log(err, "error in the catch block")
-    //       return err
-    //     }
-    //   }
-
-    // componentDidMount(){
-    //   this.getBeers().then((data) => 
-    //   {
-    //       console.log(data, 'The beers mounted')
-    //       this.setState(
-    //           {
-    //               ready: true
-    //           }
-    //       )
-    //     });
-    
-    // }
-
-
+  handleSelection = (option) => {
+    console.log(option);
+    this.setState({
+        selectedState: option.value
+    })
+    console.log(this.state.selectedState);
+    // this.handleTermChange(this.state.term);
+  }
    
 
   render() {
     console.log(this.props.userId)
       return (
         <div className="App">
-            <Header />
             <table className="titleBar">
+            <img src={Logo} height="100px" className="logo" alt="Logo"/>
               <tbody>
                 <tr>
                   <td>
@@ -135,17 +97,24 @@ class HomeContainer extends Component {
                 </tr>
               </tbody>
             </table>
-            <NavbarHeader/>
-
-
-         
+            <Navbar/>
 
 
 
-            <form onSubmit={this.handleSubmit}>
-                <input type="text" placeholder="search..." name="searchTerm" onChange={this.handleTermChange} />
-                <button type="submit">Search</button>
+
+            <form class="searchForm" onSubmit={this.handleSubmit}>
+              
+              <Input type='text' placeholder='Search City...' name="searchTerm" onChange={this.handleTermChange} action>
+              <input />
+              <DropDown class="css-yk16xz-control css-1pahdxg-control" currentState={this.props.state} handleSelection={this.handleSelection} />
+              <Button class="ui.button" type='submit'>Find Breweries</Button>
+              </Input>
             </form>
+            
+
+
+
+
             
             {
                 this.state.ready ?

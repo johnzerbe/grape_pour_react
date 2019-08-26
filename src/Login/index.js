@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import '../App.css';
 
 class Login extends Component {
     constructor() {
@@ -35,25 +37,29 @@ class Login extends Component {
 
     render() {
         return (
-            <div>
-                <h3>Login</h3>
-                <form onSubmit={this.handleSubmit}>
-                    <label>
-                        Username:
-                        <input type="text" name="username" onChange={this.handleChange} />
-                    </label>
-                    <label>
-                        Password:
-                        <input type="password" name="password" onChange={this.handleChange} />
-                    </label>
-                    <button type='submit' >Login</button>
-                    <message>
-                        Not a member? <Link to='/register'>Register</Link>
-                    </message>
-                </form>
+            
+            <div className="loginall">
+                <h2 class="banner">Welcome to OnTap!</h2>  
+            <div class="wrapper">
+            <form onSubmit={this.handleSubmit} class="form-signin">   
+              <h2 class="form-signin-heading">login</h2>
+              <input type="text" class="form-control" name="username" placeholder="Username"  onChange={this.handleChange} />
+              <input type="password" class="form-control" name="password" placeholder="Password" onChange={this.handleChange} />
+                <Button color="warning" className="btn login-button btn-primary btn-block" type="submit">Login</Button> 
+                <message className="messageclass">
+                    Not a member? <Link className="reg" to='/register'>Register</Link>
+                </message>  
+            </form>
             </div>
+            </div>
+          
+            
         )
     }
 }
 
 export default Login;
+
+
+
+

@@ -7,7 +7,7 @@ class Header extends React.Component {
     return (
       <Container className="header">
         <Row>
-        <Col><img src={Logo} height="100px" className="logo float-left" alt="Logo"/></Col>
+        <img src={Logo} height="65px" className="logo float-left" alt="Logo"/>
         </Row>
       </Container>
       
