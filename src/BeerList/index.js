@@ -15,8 +15,6 @@ let formatPhoneNumber = (str) => {
   };
 
 
-
-
 const BeerList = (props) => {
     const beerList = props.beers.map((beer, i) => {
         return (

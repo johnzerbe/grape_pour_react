@@ -1,10 +1,9 @@
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
-
 import React, { Component } from 'react';
+import retroMap from '../RetroMap'
 
 const mapStyles = {
-    // borderTop: "4px solid #E3A710",
-    // borderBottom: "4px solid #E3A710",
+   
     width: '100%',
     height: '400px'
   };
@@ -113,14 +112,13 @@ class MapContainer extends Component {
                 this.state.ready ?
                 <Map
                 google={this.props.google}
-                zoom={11.5}
+                zoom={12}
                 style={mapStyles}
                 initialCenter={{ 
                     lat: this.state.beerCoordinates[0].lat, 
                     lng: this.state.beerCoordinates[0].lng}}>
                 
                 {this.getMarkers()}
-                {this.getAvgLatLng()}
                
                 
                     

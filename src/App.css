@@ -151,7 +151,6 @@
   width: 11rem;
 }
 
-
 .ui.input>input {
   width: 16rem
 }
@@ -182,13 +181,65 @@
   background-color:transparent !important;
 }
 
+@media screen and (max-width: 420px) {
+  .css-yk16xz-control, .css-1pahdxg-control {
+    width: 9rem
+  }
+ }
+
+.fuckme {
+  margin: 0 auto;
+  right: 50%;
+  text-align: center;
+
+ }
+
+.brew-btn {
+   margin: 20px;
+ }
+
+.brew-list {
+  font-weight: bold;
+  font-family: 'Bitter', serif;
+ }
+
+.my-brews {
+   width: 400px;
+   margin: 0 auto;
+   text-align: center;
+ }
+
+.delete {
+   text-align: right;
+   bottom: 90%; 
+   margin: 20px;
+   margin-top: 200px;
+}
+
+.delete-btn {
+  margin: 20px;
+}
+
+.form-inline {
+  margin-left: 60%;
+  
+  margin-bottom: 1rem
+}
+
+@media screen and (max-width: 420px) {
+  .form-inline {
+    margin-left: 2rem
+  }
+  .css-yk16xz-control, .css-1pahdxg-control {
+    width: 12rem
+  }
+}
 
 
-.markerLabel
-{
-  border: 1px solid black;
-  background-color: white;
-  border-radius: 5px;
-  padding: 5px;
-  margin: 0px 0px 10px 0px;
+.btn-brew {
+  background: #fcbb11 !important;
+  color: black !important
+}
+.btn-brew:hover {
+  background: #F0AD11 none !important;
 }

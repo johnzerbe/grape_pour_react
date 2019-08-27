@@ -6,14 +6,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Logo from '../beerlogo.svg';
 import DropDown from '../DropDown';
 import Navbar from '../Nav';
-import { Input, Button } from 'semantic-ui-react';
+
 import 'semantic-ui-css/semantic.min.css';
-import Welcome from '../Welcome'
+import Welcome from '../Welcome';
+import { Media } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+
+
 
 
 
 const apiURL = 'https://api.openbrewerydb.org/breweries?';
-
+const perPageAPI = '&per_page=30';
 
 
 
@@ -27,7 +31,8 @@ class HomeContainer extends Component {
       searchTerm: "",
       city: "by_city",
       state: "by_state",
-      selectedState: ''
+      selectedState: '',
+      comments: ''
     }
     this.handleTermChange = this.handleTermChange.bind(this);
 
@@ -43,7 +48,7 @@ class HomeContainer extends Component {
     this.setState({
       ready: false
     })
-    let url = (`${apiURL}${this.state.city}=${this.state.searchTerm}&${this.state.state}=${this.state.selectedState}`);
+    let url = (`${apiURL}${this.state.city}=${this.state.searchTerm}&${perPageAPI}&${this.state.state}=${this.state.selectedState}`);
       fetch(url)
       .then(response => response.json())
       .then((beers) => {
@@ -72,6 +77,24 @@ class HomeContainer extends Component {
     console.log(this.state.selectedState);
     // this.handleTermChange(this.state.term);
   }
+
+
+  logout = async() => {
+    console.log('this is logout in HomeContainer')
+      try{
+        const logoutUser = await fetch('http://localhost:8000/user/logout')
+        const parsedLogout = await logoutUser.json();
+        console.log(parsedLogout);
+        if(parsedLogout.status.message === "Success"){
+          console.log('ParsedLogout is working')
+          this.props.history.push('/');
+          console.log(this.history, 'The rest is history')
+        }
+      }
+      catch(err){
+        return err;
+      }
+    }
    
 
   
@@ -92,31 +115,29 @@ class HomeContainer extends Component {
               </tbody>
             </table>
 
-            <Navbar/>
-
-            <form class="searchForm" onSubmit={this.handleSubmit}>
-              <Input type='text' placeholder='Search City...' name="searchTerm" value={this.state.searchTerm} onChange={this.handleTermChange} action>
-              <input />
-              <DropDown class="css-yk16xz-control css-1pahdxg-control" currentState={this.props.state} handleSelection={this.handleSelection} />
-              <Button class="ui.button" type='submit'>Find Breweries</Button>
-              </Input>
-            </form>
-
-
-         
-
-                    
-
-
-
-
-
-
-
+            <Navbar logout={this.logout}/>
             
+            
+            <div className="search-form">
+            <Form inline onSubmit={this.handleSubmit}>
+              <FormGroup>
+                <Input type="text" name="searchTerm" id="exampleEmail" placeholder="Search City..." value={this.state.searchTerm} onChange={this.handleTermChange}/>
+              </FormGroup>
+              {' '}
+              <FormGroup>
+                
+              <DropDown class="dropdown" currentState={this.props.state} handleSelection={this.handleSelection} />
+              </FormGroup>
+              {' '}
+              <Button className="btn-brew" >Find <strong>Breweries</strong></Button>
+            </Form>
+            </div>
+
+        
             { !this.state.ready ? <Welcome /> : null}
             
-            
+      
+        
             {
                 this.state.ready ?
                     <div>
@@ -133,6 +154,18 @@ class HomeContainer extends Component {
                 :
                 null
             }
+
+        <Media>
+          <Media body>
+            <Media className="brew-list" heading>
+              Favorite Breweries
+            </Media>
+          </Media>
+        </Media>
+        <hr className="my-2" />
+            <div className="my-brews">
+                {this.props.comments} 
+            </div>
         </div>
       );
   }
