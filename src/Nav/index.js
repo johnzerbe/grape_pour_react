@@ -1,25 +1,14 @@
 import React from 'react';
-import { Nav, NavItem, NavLink } from 'reactstrap';
+import { Nav, NavLink } from 'reactstrap';
+import App from '../App.css';
 
-class Navbar extends React.Component {
-  render() {
-    return (
-        <div className='navbar'>
-      
-        <Nav>
-          <NavItem>
-              <NavLink className="nav-text" href="#">Home</NavLink>
-          </NavItem>
-          <NavItem>
-              <NavLink className="nav-text" href="#">User</NavLink>
-          </NavItem>
-          <NavItem>
-              <NavLink className="nav-text" href="#">Logout</NavLink>
-          </NavItem>
-      </Nav>
-      </div>
-    );
-  }
+const NavBar = (props) => {
+  return(
+    <Nav>
+          <NavLink className="nav-text" href="/home">Home</NavLink>
+          <NavLink className="nav-text" href="#" onClick={props.logout}>Logout</NavLink> 
+    </Nav>
+  )
 }
 
-export default Navbar;
+export default NavBar;
