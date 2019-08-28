@@ -17,7 +17,7 @@ class Register extends Component {
 
 
     handleSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault()
         })
     }
     onChange = (e) => {
