@@ -48,7 +48,7 @@ class Register extends Component {
             <form onSubmit={this.handleSubmit} class="form-signin">       
               <h2 class="form-signin-heading">register</h2>
               <input type="text" class="form-control" name="username" placeholder="Username" required="True" onChange={this.handleChange} /> 
-              <input type="text" class="form-control" name="password" placeholder="Password" onChange={this.handleChange} />
+              <input type="password" class="form-control" name="password" placeholder="Password" onChange={this.handleChange} />
                 <Button color="warning" className="btn login-button btn-primary btn-block" type="submit">Register</Button> 
                 <message className="messageclass">
                     Already a member? <Link className="reg" to='/'>Login</Link>
