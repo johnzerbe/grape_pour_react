@@ -24,6 +24,7 @@ class Register extends Component {
         this.setState({
             [e.target.name]: e.target.value
         })
+        props.register(this.state)
     }
 
 
