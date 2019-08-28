@@ -15,11 +15,6 @@ class Register extends Component {
     }
 
 
-
-    handleSubmit = async (e) => {
-        e.preventDefault()
-        })
-    }
     onChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value
@@ -33,7 +28,7 @@ class Register extends Component {
             <div className="loginall">
                    <h2 class="banner">Welcome to OnTap!</h2>  
             <div class="wrapper">
-            <form onSubmit={this.handleSubmit} class="form-signin">       
+            <form class="form-signin">       
               <h2 class="form-signin-heading">register</h2>
               <input type="text" class="form-control" name="username" onChange={this.onChange} placeholder="Username" required="True" onChange={this.handleChange} /> 
               <input type="password" class="form-control" name="password" onChange={this.onChange} placeholder="Password" onChange={this.handleChange} />
