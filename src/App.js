@@ -64,7 +64,7 @@ class App extends Component {
         credentials: 'include',
         body: data,
         headers: {
-          'enctype': 'multipart/form-data'
+          'Content-Type': 'application/json'
         }
       })
 
@@ -95,7 +95,6 @@ class App extends Component {
         'Content-Type': 'application/json'
         }
     })
-    // console.log(await submitComment);
     const parsedEditResponse = await submitComment.json();
     console.log(parsedEditResponse, "<-- parsedEditResponse in editUser")
     this.setState({
