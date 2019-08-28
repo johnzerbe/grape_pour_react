@@ -59,7 +59,7 @@ class App extends Component {
   register = async (data) => {
     console.log(data, '<-- data in register route')
     try {
-      const registerResponse = await fetch('http://localhost:8000/user/register', {
+      const registerResponse = await fetch(process.env.REACT_APP_BACKEND_URL + '/user/register', {
         method: 'POST',
         credentials: 'include',
         body: data,
@@ -87,7 +87,7 @@ class App extends Component {
   editUser = async (dataFromUser) => {
     try{
        console.log(dataFromUser, '<-- dataFromUser in App.js')
-    const submitComment = await fetch('http://localhost:8000/user/' + this.state.id, {
+    const submitComment = await fetch(process.env.REACT_APP_BACKEND_URL + '/user/' + this.state.id, {
       method: 'PUT',
       credentials: 'include',
       body: JSON.stringify(dataFromUser),
@@ -112,7 +112,7 @@ class App extends Component {
     const userToDelete = this.state.id
     console.log(this.state.id, ' deleteUser ID')
     try {
-      const deleteUser = await fetch('http://localhost:8000/user/' + userToDelete, {
+      const deleteUser = await fetch(process.env.REACT_APP_BACKEND_URL + '/user/' + userToDelete, {
         method: 'DELETE',
         credentials: 'include',
         headers: {
