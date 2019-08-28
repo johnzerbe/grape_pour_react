@@ -18,27 +18,14 @@ class Register extends Component {
 
     handleSubmit = async (e) => {
         e.preventDefault();
-
-        const data = new FormData();
-        data.append('username', this.state.username);
-        data.append('password', this.state.password);
-
-        console.log(data.entries(), '< THIS IS DATA')
-        for (let pair of data.entries()) {
-            console.log(pair[0] ,', ', pair[1])
-        }
-
-        const registerCall = this.props.register(data)
-
-        registerCall.then((data) => {
-            console.log(data)
-            if(data.status.message === "Success") {
-                this.props.history.push('/home')
-            } else {
-                console.log(data)
-            }
         })
     }
+    onChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
 
     render() {
         return (
@@ -47,8 +34,8 @@ class Register extends Component {
             <div class="wrapper">
             <form onSubmit={this.handleSubmit} class="form-signin">       
               <h2 class="form-signin-heading">register</h2>
-              <input type="text" class="form-control" name="username" placeholder="Username" required="True" onChange={this.handleChange} /> 
-              <input type="password" class="form-control" name="password" placeholder="Password" onChange={this.handleChange} />
+              <input type="text" class="form-control" name="username" onChange={this.onChange} placeholder="Username" required="True" onChange={this.handleChange} /> 
+              <input type="password" class="form-control" name="password" onChange={this.onChange} placeholder="Password" onChange={this.handleChange} />
                 <Button color="warning" className="btn login-button btn-primary btn-block" type="submit">Register</Button> 
                 <message className="messageclass">
                     Already a member? <Link className="reg" to='/'>Login</Link>
@@ -64,4 +51,24 @@ class Register extends Component {
 
 export default Register;   
 
+
+        // const data = new FormData();
+        // data.append('username', this.state.username);
+        // data.append('password', this.state.password);
+
+        // console.log(data.entries(), '< THIS IS DATA')
+        // for (let pair of data.entries()) {
+        //     console.log(pair[0] ,', ', pair[1])
+        // }
+
+        // const registerCall = this.props.register(data)
+
+        // registerCall.then((data) => {
+        //     console.log(data)
+        //     if(data.status.message === "Success") {
+        //         this.props.history.push('/home')
+        //     } else {
+        //         console.log(data)
+        //     }
+        // })
 

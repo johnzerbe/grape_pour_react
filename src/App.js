@@ -70,7 +70,7 @@ class App extends Component {
 
       const parsedResponse = await registerResponse.json();
 
-      console.log(parsedResponse, '< parsedResponse')
+      console.log(parsedResponse, '<-- parsedResponse')
 
       this.setState({
         ...parsedResponse.data,
@@ -95,6 +95,7 @@ class App extends Component {
         'Content-Type': 'application/json'
         }
     })
+    // console.log(await submitComment);
     const parsedEditResponse = await submitComment.json();
     console.log(parsedEditResponse, "<-- parsedEditResponse in editUser")
     this.setState({
