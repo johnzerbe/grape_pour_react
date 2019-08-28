@@ -61,6 +61,10 @@
   color: white;
 }
 
+.cardNumbers {
+  color: black !important
+}
+
 .card {
   background-color: #282c34;
   border: solid 3px red;

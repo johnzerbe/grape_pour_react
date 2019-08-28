@@ -11,25 +11,15 @@ class Register extends Component {
         this.state = {
             username: '',
             password: '',
-            image: {}
         }
     }
 
-    handleChange = (e) => {
-        if(e.target.name !== 'image') {
-            this.setState({[e.target.name]: e.target.value});
-        } else {
-            // file upload
-            console.log(e.target.files[0])
-            this.setState({image: e.target.files[0]});
-        }
-    }
+
 
     handleSubmit = async (e) => {
         e.preventDefault();
 
         const data = new FormData();
-        data.append('file', this.state.image);
         data.append('username', this.state.username);
         data.append('password', this.state.password);
 
@@ -59,10 +49,6 @@ class Register extends Component {
               <h2 class="form-signin-heading">register</h2>
               <input type="text" class="form-control" name="username" placeholder="Username" required="True" onChange={this.handleChange} /> 
               <input type="text" class="form-control" name="password" placeholder="Password" onChange={this.handleChange} />
-              <label>
-                   Upload Photo:
-                <input type="file" name="image" onChange={this.handleChange} />
-            </label>
                 <Button color="warning" className="btn login-button btn-primary btn-block" type="submit">Register</Button> 
                 <message className="messageclass">
                     Already a member? <Link className="reg" to='/'>Login</Link>

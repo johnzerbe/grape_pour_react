@@ -20,6 +20,7 @@ const BeerList = (props) => {
         return (
             <Card>
             <CardBody>
+                <CardTitle className="float-right main-text cardNumbers">{i += 1}</CardTitle>
                 <CardTitle className="text-md-left main-text"><a className="main-text" target="blank" href={beer.website_url}>{beer.name}</a></CardTitle>
                 <CardSubtitle className="text-md-left sub-text"><i class="marker icon"></i>
                 { !beer.street ? "Not Listed" : beer.street}</CardSubtitle>

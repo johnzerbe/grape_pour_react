@@ -23,7 +23,6 @@ class App extends Component {
     this.state = {
       username: '',
       password: '',
-      image: '',
       id: '',
       loading: true,
       comments: ''
