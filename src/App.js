@@ -31,7 +31,7 @@ class App extends Component {
 
   login = async (loginInfo) => {
     try {
-      const loginResponse = await fetch('http://localhost:8000/user/login', {
+      const loginResponse = await fetch(process.env.REACT_APP_BACKEND_URL +'/user/login', {
         method: 'POST',
         credentials: 'include',
         body: JSON.stringify(loginInfo),
@@ -62,7 +62,7 @@ class App extends Component {
       const registerResponse = await fetch(process.env.REACT_APP_BACKEND_URL + '/user/register', {
         method: 'POST',
         credentials: 'include',
-        body: data,
+        body: JSON.stringify(data),
         headers: {
           'Content-Type': 'application/json'
         }
@@ -95,7 +95,6 @@ class App extends Component {
         'Content-Type': 'application/json'
         }
     })
-    // console.log(await submitComment);
     const parsedEditResponse = await submitComment.json();
     console.log(parsedEditResponse, "<-- parsedEditResponse in editUser")
     this.setState({

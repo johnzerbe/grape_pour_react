@@ -16,26 +16,34 @@ class Register extends Component {
 
 
     onChange = (e) => {
+
         this.setState({
             [e.target.name]: e.target.value
         })
-        props.register(this.state)
+
+    }
+    onSubmit = (e, props) => {
+         e.preventDefault();
+        this.props.register(this.state)
+          console.log(this.state, '<-- this.state')
+          this.props.history.push('/home')
     }
 
-
-    render() {
+    render(props) {
+        
+      
         return (
             <div className="loginall">
-                   <h2 class="banner">Welcome to OnTap!</h2>  
-            <div class="wrapper">
-            <form class="form-signin">       
-              <h2 class="form-signin-heading">register</h2>
-              <input type="text" class="form-control" name="username" onChange={this.onChange} placeholder="Username" required="True" onChange={this.handleChange} /> 
-              <input type="password" class="form-control" name="password" onChange={this.onChange} placeholder="Password" onChange={this.handleChange} />
-                <Button color="warning" className="btn login-button btn-primary btn-block" type="submit">Register</Button> 
-                <message className="messageclass">
+                   <h2 className="banner">Welcome to OnTap!</h2>  
+            <div className="wrapper">
+            <form className="form-signin" onSubmit={this.onSubmit}>       
+              <h2 className="form-signin-heading">register</h2>
+              <input type="text" className="form-control" value={this.state.username} name="username" onChange={this.onChange} placeholder="Username" required="True"  /> 
+              <input type="password" className="form-control" name="password" value={this.state.password} onChange={this.onChange} placeholder="Password" />
+                <Button color="warning" className="btn login-button btn-primary btn-block" type="submit" action="/home">Register</Button> 
+                <div className="messageclass">
                     Already a member? <Link className="reg" to='/'>Login</Link>
-                </message>  
+                </div>  
             </form>
             </div>
             </div>
